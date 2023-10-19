@@ -14,6 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the React app for production
+WORKDIR /client
 RUN npm start
 
 # Expose the port that your React app will run on (usually 3000)
