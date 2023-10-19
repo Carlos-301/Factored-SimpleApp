@@ -25,4 +25,6 @@ def root():
 
 @app.get("/users")
 def users():
-    return user
+    user2 = user
+    user2.skills = {"java": 7, "python": 8, "react": 6, "communication": 7, "teamwork": 7} 
+    return user2

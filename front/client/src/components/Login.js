@@ -88,17 +88,15 @@ function Login() {
     </Container>
   ) : (
     <Form>
+      <h1>{formValues.email}</h1>
+      <h2>Ingresa la contraseña</h2>
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>{formValues.email}</Form.Label>
         <Form.Control
           type="password"
           placeholder="Password"
           onChange={handlePasswordChange}
           value={formValues.password}
         />
-        <Form.Text className="text-muted">
-          Your password should contain numbers and letters and should be at least 9 characters long
-        </Form.Text>
       </Form.Group>
 
       <Button variant="primary" onClick={showHome}>
