@@ -2,14 +2,22 @@ from fastapi import FastAPI
 from models import User, engine
 from fastapi.middleware.cors import CORSMiddleware
 
+app= FastAPI()
+
 
 origins =[
-    "http://localhost:8000",
+    "http://localhost:3000",
 ]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+)
+
 # create user
 user = User(name='Pepito Perez', skills="java: 7, python: 8, react: 6,communication:7,teamwork:7", position='Software Engineer')
 
-app= FastAPI()
+
 
 @app.get("/")
 def root():
@@ -17,6 +25,4 @@ def root():
 
 @app.get("/users")
 def users():
-    user2 = user
-    user2.skills = {skill.split(':')[0]: int(skill.split(':')[1]) for skill in user.skills.split(',')}
-    return user2
+    return user

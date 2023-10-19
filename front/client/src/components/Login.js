@@ -60,51 +60,54 @@ function Login() {
     })
 
   return(
-    <div>
-      {state === 0 ?(
-        <Container> 
-        <h1>Acceder</h1>
-        <Form>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+  {state === 0 ? (
+    <Container>
+      <h1>Acceder</h1>
+      <Form>
         <Form.Group className="mb-6" controlId="formUser">
-        <Form.Control type="user" placeholder="Enter username"
-        onChange={handleUserChange} value={formValues.email}/>
+          <Form.Control
+            type="user"
+            placeholder="Enter username"
+            onChange={handleUserChange}
+            value={formValues.email}
+          />
         </Form.Group>
         <Container>
           <Row>
-            <Col> 
-            Crear cuenta
+            <Col>Crear cuenta</Col>
+            <Col>
+              <p>¿Olvidaste el correo electrónico?</p>
             </Col>
-            <Col> 
-            <p> Olvidaste el correo electronico? </p>
-            </Col>
-          </Row> 
-          </Container>
-        
+          </Row>
+        </Container>
         <Button variant="primary" onClick={validationStates}>
           Siguiente
         </Button>
-        </Form>
+      </Form>
     </Container>
-) : (
-  <Form>
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label >{formValues.email}</Form.Label>
-    <Form.Control type="password" placeholder="Password"
-    onChange={ handlePasswordChange} value={formValues.password} />
-    { <Form.Text
-    className="text-muted">Your password should be have numbers and letters and
-    should be at least 9 char long </Form.Text>}
-    </Form.Group>
+  ) : (
+    <Form>
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>{formValues.email}</Form.Label>
+        <Form.Control
+          type="password"
+          placeholder="Password"
+          onChange={handlePasswordChange}
+          value={formValues.password}
+        />
+        <Form.Text className="text-muted">
+          Your password should contain numbers and letters and should be at least 9 characters long
+        </Form.Text>
+      </Form.Group>
 
-    <Button variant="primary" onClick={showHome}>
-      Acceder
-    </Button>
+      <Button variant="primary" onClick={showHome}>
+        Acceder
+      </Button>
     </Form>
+  )}
+</div>
 
-      ) 
-      }
-      
-      </div>
         
   )
 
