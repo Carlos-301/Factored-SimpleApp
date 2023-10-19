@@ -3,6 +3,7 @@ import React,{useState,useEffect} from 'react';
 import { Container, Row ,Col} from 'react-bootstrap';
 import { Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, LineController, LineElement, PointElement, LinearScale, Title, RadialLinearScale } from 'chart.js';
+import ProfileAvatar from './ProfileAvatar';
 
 ChartJS.register(LineController, LineElement, PointElement, LinearScale, Title,RadialLinearScale);
 
@@ -15,6 +16,8 @@ function Home() {
         skills: {},
         position:""
       });
+
+      const [avatarUrl, setAvatarUrl] = useState('');
     
       const fetch_users = async () => {
         const response = await api.get("/users");
@@ -57,12 +60,20 @@ function Home() {
         },
       };
 
+      useEffect(() => {
+        let avatarId = 'Binx Bond'
+        fetch('https://api.multiavatar.com/'+JSON.stringify(avatarId))
+        .then(res => res.text())
+        .then(svg => setAvatarUrl(svg))
+      }, []);
+
 
   return (
     <div>
       <Container>
         <Row>
           <Col >
+            <img src={'https://api.multiavatar.com/Binx'}></img>
             <h1>{users.name}</h1>
             <h2>{users.position}</h2>
           </Col>
