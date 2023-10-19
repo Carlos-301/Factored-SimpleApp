@@ -24,11 +24,14 @@ function Home() {
 
       const chartData = {
         labels: ['Strength', 'Speed', 'Agility', 'Stamina', 'Intelligence'],
-        datasets: users.map((user) => ({
-          label: user.name,
-          data: user.skills,
-        })),
+        datasets: [
+          {
+            label: 'Skills',
+            data: [80, 70, 90, 65, 75],
+          },
+        ],
       };
+
   return (
     <div>
         <Container>
@@ -36,9 +39,9 @@ function Home() {
             <Row> <h1> {users.name} </h1> </Row>
             <Row> <h2> {users.position} </h2> </Row>
             </Col>
-            <Row> 
-            <SpiderChart data={chartData} /> 
-            </Row>
+            <Col>
+            <SpiderChart data={chartData} />
+            </Col>
         </Container>
       
     </div>
